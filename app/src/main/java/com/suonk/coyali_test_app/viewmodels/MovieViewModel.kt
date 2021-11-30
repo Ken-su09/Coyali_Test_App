@@ -1,5 +1,6 @@
 package com.suonk.coyali_test_app.viewmodels
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -24,5 +25,10 @@ class MovieViewModel @Inject constructor(private val repository: DefaultReposito
 
     fun deleteMovie(movie: Movie) = viewModelScope.launch {
         repository.deleteMovie(movie)
+    }
+
+    var mutableLiveDataMovie = MutableLiveData<Movie?>()
+    fun setMutableLiveDataMovie(movie: Movie?) {
+        mutableLiveDataMovie.postValue(movie)
     }
 }
